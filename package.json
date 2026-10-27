@@ -79,6 +79,9 @@
     "cypress:open": "bun run test:install && cypress open",
     "build:watch": "bun run build.ts --watch"
   },
+  "trustedDependencies": [
+    "bun"
+  ],
   "publishConfig": {
     "access": "public"
   },

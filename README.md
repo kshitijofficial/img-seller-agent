@@ -2,6 +2,14 @@
 
 This is the starter template for ElizaOS projects.
 
+## Paid image endpoint
+
+With the seller running on port 8000, buyers should request
+`GET http://localhost:8000/api/v1/images/monalisa`. The route is registered
+without a plugin name prefix so it matches the x402 payment configuration.
+An unpaid request returns `402 Payment Required` when the seller is configured.
+Restart the seller after updating its route registration.
+
 ## Features
 
 - Pre-configured project structure for ElizaOS development
@@ -26,6 +34,19 @@ elizaos dev
 ```
 
 ## Development
+
+If a build reports `Bun's postinstall script was not run`, repair the local
+Bun executable from the project root, then rebuild:
+
+```bash
+node node_modules/bun/install.js
+bun run build
+```
+
+The project trusts Bun's dependency install script via `trustedDependencies`
+in `package.json`. Install dependencies without `--ignore-scripts` so Bun can
+set up its executable. Run installation and development commands in the same
+environment (Windows or WSL).
 
 ```bash
 # Start development with hot-reloading (recommended)
